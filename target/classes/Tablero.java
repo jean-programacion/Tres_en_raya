@@ -17,7 +17,7 @@ public class Tablero {
         this.vaciar();
     }
 
-    public void mostrar() {
+    public void mostrar(Simbolos simbolos) {
         System.out.print(" __ | ");
         for (int i = 1; i <= this.casillas.length; i++) {
             System.out.print(i + " | ");
@@ -26,7 +26,13 @@ public class Tablero {
             System.out.print("\n| " + (i + 1) + " ");
 
             for (int j = 0; j < this.casillas[i].length; j++) {
-                System.out.print("| " + this.casillas[i][j] + " ");
+                
+                if ( this.casillas[i][j].equals(EstadoCasilla.VACIO)){
+                    System.out.print("| "+EstadoCasilla.VACIO+" ");
+                }else{
+                System.out.print("| " + simbolos.obtenerSimbolo(casillas[i][j]) + " ");
+                }
+                
             }
             System.out.print("|");
         }

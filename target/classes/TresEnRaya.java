@@ -27,16 +27,18 @@ public class TresEnRaya {
     }
 
     public void jugar() {
+        Simbolos simbolo = new Simbolos();
+        simbolo.seleccionar();
         Tablero tablero = new Tablero();
-        tablero.mostrar();
-        Jugador jugador1 = new Jugador(EstadoCasilla.Ficha_X);
-        Jugador jugador2 = new Jugador(EstadoCasilla.Ficha_O);
+        tablero.mostrar(simbolo);
+        Jugador jugador1 = new Jugador(simbolo,EstadoCasilla.Ficha_X);
+        Jugador jugador2 = new Jugador(simbolo,EstadoCasilla.Ficha_O);
         Jugador ganador = null;
 
         while (!tablero.estaLleno()) {
             jugador1.ponerFicha(tablero);
-            tablero.mostrar();
-            if (tablero.haGanado(jugador1.ficha)) {
+            tablero.mostrar(simbolo);
+            if (tablero.haGanado(jugador1.getFicha())) {
                 ganador = jugador1;
                 break; // Jugador 1 gana
             }
@@ -46,8 +48,8 @@ public class TresEnRaya {
             }
 
             jugador2.ponerFicha(tablero);
-            tablero.mostrar();
-            if (tablero.haGanado(jugador2.ficha)) {
+            tablero.mostrar(simbolo);
+            if (tablero.haGanado(jugador2.getFicha())) {
                 ganador = jugador2;
                 break; // Jugador 2 gana
             }
@@ -59,4 +61,5 @@ public class TresEnRaya {
             System.out.println("El juego terminó en empate.");
         }
     }
+    
 }
